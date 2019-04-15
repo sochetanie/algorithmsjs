@@ -7,8 +7,17 @@
  * @param {array} arr - An array of integers
  */
 function leadZeroes(arr) {
-
+    let temp = [];
+    for (let i = 0; i < arr.length; i++) {
+            if(arr[i] === 0) {
+                temp = arr.splice(i, 1);
+                arr.unshift(temp[0]);
+            }
+    }
+    return arr
 }
+// leadZeroes([2,2,0,1,0])
+
 
 /**
  * Setter
@@ -18,8 +27,16 @@ function leadZeroes(arr) {
  * @param {array} arr - An array of data
  */
 function setter(arr) {
-
+    let newArr = []
+    for (let i = 0; i < arr.length; i++) {
+        if (!newArr.includes(arr[i])) {
+            newArr.push(arr[i])
+        }
+    }
+    return newArr
 }
+// setter([1,1,2,2,3,3])
+
 
 /**
  * Is Prime
@@ -32,7 +49,8 @@ function setter(arr) {
  * @param num
  */
 function isPrime(num) {
-
+    if(num % 2 === 0) { return false}
+    else {return true}
 }
 
 /**
@@ -43,9 +61,11 @@ function isPrime(num) {
  * @param dividend
  * @param divisor
  */
-function modulo(dividend, divisor) {
 
+function modulo(dividend, divisor) {
+    return (dividend - divisor * Math.floor(dividend / divisor)); 
 }
+// modulo(7, 3)
 
 /**
  * Next Five
@@ -57,7 +77,8 @@ function modulo(dividend, divisor) {
  * @param num
  */
 function nextFive(num) {
-
+    let reminder = num%5
+    return num + (5 - reminder)
 }
 
 /**
@@ -69,8 +90,21 @@ function nextFive(num) {
  * @param obj
  */
 function osort(obj) {
+    let result = {}
+    // for (const key in obj) {
+    //     if (obj.hasOwnProperty(key)) {
+    //         temp.push(obj.key)
+    //     }
+    // }
+    // obj.sort((a,b) => {return a - b})
 
+    Object.keys(obj)
+      .sort()
+      .forEach(a => {
+          result[a] = obj[a]
+       })
 }
+// osort({z: 3, a: 1})
 
 module.exports = {
     leadZeroes: leadZeroes,
