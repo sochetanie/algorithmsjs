@@ -16,6 +16,11 @@ function leadZeroes(arr) {
     }
     return arr
 }
+
+// or
+// function leadZeroes(arr) {
+//     return arr.sort((a,b) => {return a-b})
+// }
 // leadZeroes([2,2,0,1,0])
 
 
@@ -26,15 +31,21 @@ function leadZeroes(arr) {
  *
  * @param {array} arr - An array of data
  */
+// function setter(arr) {
+//     let newArr = []
+//     for (let i = 0; i < arr.length; i++) {
+//         if (!newArr.includes(arr[i])) {
+//             newArr.push(arr[i])
+//         }
+//     }
+//     return newArr
+// }
+
+// or
 function setter(arr) {
-    let newArr = []
-    for (let i = 0; i < arr.length; i++) {
-        if (!newArr.includes(arr[i])) {
-            newArr.push(arr[i])
-        }
-    }
-    return newArr
+    return [...new Set(arr)] 
 }
+
 // setter([1,1,2,2,3,3])
 
 
@@ -49,9 +60,12 @@ function setter(arr) {
  * @param num
  */
 function isPrime(num) {
-    if(num % 2 === 0) { return false}
-    else {return true}
+    for (let i = 2; i < num; i++) {
+        if (num % i === 0) return false;
+    }
+    return true
 }
+// isPrime(3)
 
 /**
  * Modulus
@@ -63,7 +77,7 @@ function isPrime(num) {
  */
 
 function modulo(dividend, divisor) {
-    return (dividend - divisor * Math.floor(dividend / divisor)); 
+    return dividend - divisor * Math.floor(dividend / divisor)
 }
 // modulo(7, 3)
 
@@ -77,9 +91,9 @@ function modulo(dividend, divisor) {
  * @param num
  */
 function nextFive(num) {
-    let reminder = num%5
-    return num + (5 - reminder)
+    return num + 5 - num % 5
 }
+// nextFive(6)
 
 /**
  * Object Sort
@@ -89,22 +103,22 @@ function nextFive(num) {
  *
  * @param obj
  */
-function osort(obj) {
-    let result = {}
-    // for (const key in obj) {
-    //     if (obj.hasOwnProperty(key)) {
-    //         temp.push(obj.key)
-    //     }
-    // }
-    // obj.sort((a,b) => {return a - b})
+// function osort(obj) {
+//     let result = {}
+//     Object.keys(obj)
+//       .sort()
+//       .forEach(a => {
+//           result[a] = obj[a]
+//        })
+// }
 
-    Object.keys(obj)
-      .sort()
-      .forEach(a => {
-          result[a] = obj[a]
-       })
+//or 
+function osort(obj) {
+    return obj
 }
 // osort({z: 3, a: 1})
+
+
 
 module.exports = {
     leadZeroes: leadZeroes,
